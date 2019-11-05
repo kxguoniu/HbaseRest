@@ -73,7 +73,7 @@ class Filter(object):
         family = _b64encode(family)
         qualifier = _b64encode(qualifier)
         self._CheckOp(op)
-        return QualifierFilter([
+        return OrderedDict([
             ("type", "ColumnValueFilter"),
             ("op", op),
             ("family", family),
@@ -166,7 +166,7 @@ class Filter(object):
         ])
 
     def SingleColumnValueExcludeFilter(self, family, qualifier, value, op="EQUAL", c_type="BinaryComparator", miss=False, late=True):
-        # 找不到列不会返回行
+        # 返回数据不包含筛选的列
         comparator = _buildComparator(value, c_type)
         self._CheckOp(op)
         family = _b64encode(family)
