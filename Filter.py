@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-from utils import _b64encode, _b64decode, CompareOp, Comparable, Operator
+from HbaseRest.utils import _b64encode, _b64decode, CompareOp, Comparable, Operator
 from collections import OrderedDict
 
 __all__ = ["Filter"]
@@ -85,19 +85,15 @@ class Filter(object):
         pass
 
     def FamilyFilter(self, family, op="EQUAL", c_type="BinaryComparator"):
-        value = _b64encode(family)
-        return self._filter("FamilyFilter", value, op, c_type)
+        return self._filter("FamilyFilter", family, op, c_type)
 
     def QualifierFilter(self, qualifier, op="EQUAL", c_type="BinaryComparator"):
-        value = _b64encode(qualifier)
-        return self._filter("QualifierFilter", value, op, c_type)
+        return self._filter("QualifierFilter", qualifier, op, c_type)
 
     def RowFilter(self, row_key, op="EQUAL", c_type="BinaryComparator"):
-        value = _b64encode(row_key)
-        return self._filter("RowFilter", value, op, c_type)
+        return self._filter("RowFilter", row_key, op, c_type)
 
     def ValueFilter(self, value, op="EQUAL", c_type="BinaryComparator"):
-        value = _b64encode(value)
         return self._filter("ValueFilter", value, op, c_type)
 
     def FirstKeyOnlyFilter(self):

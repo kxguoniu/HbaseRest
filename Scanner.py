@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
-from utils import _b64encode, _b64decode, Operator
+from HbaseRest.utils import _b64encode, _b64decode, Operator
+from HbaseRest.Filter import Filter
 from xml.etree import ElementTree
-from Filter import Filter
 from uuid import uuid1
 import json
 
