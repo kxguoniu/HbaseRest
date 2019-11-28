@@ -73,7 +73,7 @@ class Scanner(object):
             raise ValueError("column must be 'family:qualifier'")
 
     def build_row_filters(self, row_key, **kwargs):
-        if isinstance(row_key, str):
+        if isinstance(row_key, (str, bytes)):
             return self.filter.RowFilter(row_key, **kwargs)
         elif isinstance(row_key, list) and row_key:
             if all(isinstance(one, str) for one in row_key):
