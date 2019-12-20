@@ -121,7 +121,10 @@ class Filter(object):
 
     def MultipleColumnPrefixFilter(self, prefixes):
         # 返回指定前缀列表的列
-        pass
+        return OrderedDict([
+            ("type", "MultipleColumnPrefixFilter"),
+            ("prefixes", prefixes)
+        ])
 
     def MultiRowRangeFilter(self, row_list):
         # 扫描行键范围,非常迅速
